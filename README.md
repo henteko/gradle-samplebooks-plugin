@@ -1,5 +1,5 @@
 # Gradle Sample Books Plugin
-This plugin is saple.
+This plugin is sample.
 
 ## example
 [example build.gradle](https://github.com/henteko/gradle-samplebooks-plugin/blob/master/example/build.gradle)
