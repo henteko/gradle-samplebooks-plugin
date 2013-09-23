@@ -1,0 +1,40 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+group = 'com.henteko07'
+archivesBaseName = 'gradle'
+version = '0.1'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile gradleApi()
+  groovy localGroovy()
+}
+
+task javadocJar(type: Jar, dependsOn: groovydoc) {
+  classifier = 'javadoc'
+  from "${buildDir}/javadoc"
+}
+
+task sourcesJar(type: Jar) {
+  from sourceSets.main.allSource
+  classifier = 'sources'
+}
+
+artifacts {
+  archives jar
+  archives javadocJar
+  archives sourcesJar
+}
+
+// local upload
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      repository(url: 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath)
+    }
+  }
+}

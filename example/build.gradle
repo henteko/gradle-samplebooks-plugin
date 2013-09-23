@@ -1,0 +1,26 @@
+buildscript {
+  repositories {
+    mavenCentral() 
+    mavenLocal()
+  }
+  dependencies { 
+    classpath 'com.henteko07:gradle:0.1'
+  }
+}
+
+apply plugin: 'sample'
+
+sample {
+  configKey = "test config key"
+
+  books {
+    quickStart {
+      title = "quick start book"
+      body = "quick start book body"
+    }
+    userGuide {
+      title = "user guide book"
+      body = "user guide book body"
+    }
+  }
+}
