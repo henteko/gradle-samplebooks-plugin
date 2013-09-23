@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/henteko/gradle-samplebooks-plugin.png?branch=master)](https://travis-ci.org/henteko/gradle-samplebooks-plugin)
+
 # Gradle Sample Books Plugin
 This plugin is sample.
 
