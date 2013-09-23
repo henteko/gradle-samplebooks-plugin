@@ -11,20 +11,7 @@ class Sample implements Plugin<Project> {
         project.convention.plugins.sample = sample
         project.extensions.sample = sample
 
-        def allBookRead = project.task('allBookRead') << {
-            println "your config key: ${project.sample.configKey}"
-            println ""
-
-            def books = project.sampleBooks
-            println "books size: ${books.size()}"
-            println ""
-            for(book in books) {
-                println "setting name: ${book.name}"
-                println "title: ${book.title}"
-                println "body: ${book.body}"
-                println ""
-            }
-        }
+        def allBookRead = project.task('allBookRead', type: BookTask)
         allBookRead.group = 'Sample'
         allBookRead.description = 'All book read'
     }
