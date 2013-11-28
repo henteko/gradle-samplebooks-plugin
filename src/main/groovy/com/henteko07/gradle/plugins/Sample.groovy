@@ -7,7 +7,16 @@ import org.gradle.api.Project
 class Sample implements Plugin<Project> {
 
     void apply(Project project) {
-        def sample = new SampleExtension(project.container(BookTarget))
+        def books = project.container(BookTarget) {
+            String bookName = it.toString()
+            def subTask = project.task("${bookName}BookRead", type: SubBookTask)
+            subTask.group = 'Sample' 
+            subTask.description = "${bookName} book read"
+            subTask.bookName = bookName
+
+            project.extensions.create(it, BookTarget, bookName)
+        }
+        def sample = new SampleExtension(books)
         project.convention.plugins.sample = sample
         project.extensions.sample = sample
 
